@@ -28,7 +28,7 @@ def joy(environ, start_response):
     args2 = environ.get('QUERY_STRING', '')
     passed_args = args2 if args2 else u'Ничего!'
     start_response('200 OK', [('Content-Type', 'text/html')])
-    r_val = {'pname':'passed_name', 'pargs':'passed_args'}
+    r_val = {'pname': passed_name, 'pargs': passed_args}
     return template.render(r_val).encode('utf-8')
 
 
