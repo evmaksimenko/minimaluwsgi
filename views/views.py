@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from cgi import escape
-from jinja2 import Environment, PackageLoader, select_autoescape, Template
+from jinja2 import Environment, PackageLoader, select_autoescape
 
 
 def hello(environ, start_response):
@@ -28,7 +28,8 @@ def joy(environ, start_response):
     args2 = environ.get('QUERY_STRING', '')
     passed_args = args2 if args2 else u'Ничего!'
     start_response('200 OK', [('Content-Type', 'text/html')])
-    return template.render(pname=passed_name, pargs=passed_args).encode('utf-8')
+    r_val = {'pname':'passed_name', 'pargs':'passed_args'}
+    return template.render(r_val).encode('utf-8')
 
 
 def index(environ, start_response):
