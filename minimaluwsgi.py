@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
-from app.application import application
+from jinja2 import Environment, PackageLoader, select_autoescape
 
 HOST = 'localhost'
 PORT = 8000
 
+env = Environment(
+    loader=PackageLoader('minimaluwsgi', 'templates'),
+    autoescape=select_autoescape(['html', 'xml'])
+)
+
+from app.application import application
 
 if __name__ == '__main__':
     # script is started directly from commandline
